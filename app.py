@@ -182,14 +182,24 @@ practice_bank = {
 if "dark_mode" not in st.session_state: 
     st.session_state.dark_mode = False
 
-# Sidebar logic
 st.sidebar.title("📚 AI Smart Learning")
 st.sidebar.toggle("🌙 Dark Mode", key="dark_mode")
 
+# Optimized CSS to fix text visibility
 if st.session_state.dark_mode:
-    st.markdown("<style>.stApp { background-color: #0f172a; color: white; }</style>", unsafe_allow_html=True)
+    st.markdown("""
+        <style>
+        .stApp { background-color: #0f172a; color: white; }
+        p, h1, h2, h3, label { color: white !important; }
+        </style>
+        """, unsafe_allow_html=True)
 else:
-    st.markdown("<style>.stApp { background-color: #f8fafc; color: black; }</style>", unsafe_allow_html=True)
+    st.markdown("""
+        <style>
+        .stApp { background-color: #f8fafc; color: #1e293b; }
+        p, h1, h2, h3, label { color: #1e293b !important; }
+        </style>
+        """, unsafe_allow_html=True)
 
 #-------------SIDE BAR-------------
 
