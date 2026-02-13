@@ -203,16 +203,28 @@ else:
 
 #-------------SIDE BAR-------------
 
-st.sidebar.markdown("---")
-st.sidebar.subheader("🔍 Knowledge Map")
-for t in sorted(explanations.keys()):
-    st.sidebar.markdown(f"- {t.title()}")
+st.sidebar.title("🔎 Knowledge Map")
+
+knowledge_topics = [
+    "operating system","DBMS","data structures","artificial intelligence","cloud computing",
+    "computer network","cyber security","input device"," output device","cpu","memory unit",
+    "storage device", "system software ","web application ","programming language ","computer science "
+    ,"hardware","data","internet ","ram","rom","information "
+
+]
+
+for t in knowledge_topics:
+    if st.sidebar.button(t):
+        st.session_state.topic_input = t
 
 # ---------------- 6. MAIN UI & LOGIC ----------------
 st.title("📘 AI Smart Learning Assistant")
 st.info("📌 Enter a topic below to get instant explanations, practice, and quizzes.")
 
-topic_input = st.text_input("Enter Topic (e.g., 'What is RAM?', 'dbms')")
+topic_input = st.text_input(
+    "Enter Topic",
+    key="topic_input"
+)
 level = st.selectbox("Difficulty Level", ["Easy", "Medium", "Hard"])
 
 col1, col2 = st.columns(2)
